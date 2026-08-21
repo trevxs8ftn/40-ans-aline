@@ -44,7 +44,7 @@
     @keyframes fadeIn{ from{ opacity:0; } to{ opacity:1; } }
     .wrap{ max-width:1040px; margin:0 auto; padding:0 24px; }
     
-    header.hero{ position:relative; min-height:75vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:80px 24px 60px; overflow:hidden; }
+    header.hero{ position:relative; min-height:70vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:80px 24px 40px; overflow:hidden; }
     .hero-orbit{ position:absolute; top:50%; left:50%; width:min(720px,140vw); height:min(720px,140vw); transform:translate(-50%,-50%); border:1px solid var(--line); border-radius:50%; pointer-events:none; }
     .hero-orbit.small{ width:min(480px,100vw); height:min(480px,100vw); animation:spin 60s linear infinite; }
     .hero-orbit.large{ animation:spin 90s linear infinite reverse; }
@@ -57,16 +57,12 @@
     .hero-date{ position:relative; margin-top:34px; display:inline-flex; gap:10px; align-items:center; font-size:12px; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold-soft); opacity:0; animation:rise 1s ease 0.6s forwards; }
     .hero-date span.dot{ width:4px; height:4px; background:var(--gold); border-radius:50%; display:inline-block; }
     
-    /* Intégration EventPics */
-    section.gallery{ padding:60px 24px; }
-    .gallery-head{ text-align:center; margin-bottom:30px; }
-    .gallery-head .cta-eyebrow{ font-size:12px; letter-spacing:0.35em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
-    .gallery-head h2{ font-size:clamp(30px,5.5vw,46px); margin:0 0 12px; }
-    .admin-link{ display:inline-block; font-size:12px; letter-spacing:0.1em; color:var(--gold); text-decoration:underline; opacity:0.8; transition:opacity 0.2s; margin-top:5px; }
-    .admin-link:hover{ opacity:1; }
-    
-    .gallery-box{ border:1px solid var(--line); background:var(--bg-alt); padding:8px; border-radius:4px; box-shadow:0 10px 30px rgba(0,0,0,0.5); }
-    iframe.album-frame{ width:100%; height:800px; border:none; background:white; border-radius:4px; }
+    /* Section Bouton Photo */
+    section.gallery{ padding:60px 24px; border-top:1px solid var(--line); }
+    .cta-box{ max-width:550px; margin:0 auto; padding:40px 30px; background:var(--bg-alt); border:1px solid var(--line); text-align:center; }
+    .cta-eyebrow{ font-size:12px; letter-spacing:0.35em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+    .cta-box h2{ font-size:clamp(28px,5vw,40px); margin:0 0 16px; color:var(--ivory); }
+    .cta-box p{ color:var(--muted); line-height:1.6; margin-bottom:30px; font-size:15px; }
 
     /* Formulaires Styling */
     .form-box{ max-width:550px; margin:0 auto; padding:30px; background:var(--bg-alt); border:1px solid var(--line); text-align:left; }
@@ -75,7 +71,7 @@
     .form-group input[type="text"], .form-group select{ width:100%; background:rgba(13,17,23,0.6); border:1px solid var(--line); color:var(--ivory); padding:12px; font-family:'Jost', sans-serif; font-size:15px; outline:none; }
     .form-group input[type="text"]:focus, .form-group select:focus{ border-color:var(--gold); }
     
-    .photo-btn{ width:100%; display:inline-flex; align-items:center; justify-content:center; gap:14px; padding:18px 30px; background:var(--gold); color:#1a1406; border:none; font-family:'Jost', sans-serif; font-size:14px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; cursor:pointer; transition:transform 0.35s ease, box-shadow 0.35s ease; }
+    .photo-btn{ width:100%; display:inline-flex; align-items:center; justify-content:center; gap:14px; padding:18px 30px; background:var(--gold); color:#1a1406; border:none; font-family:'Jost', sans-serif; font-size:14px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; cursor:pointer; text-decoration:none; transition:transform 0.35s ease, box-shadow 0.35s ease; }
     .photo-btn:hover{ box-shadow:0 12px 30px rgba(241,196,15,0.28); transform:translateY(-2px); }
 
     /* Section RSVP */
@@ -114,17 +110,14 @@
     <div class="hero-date"><span class="dot"></span>Une soirée inoubliable<span class="dot"></span></div>
   </header>
 
-  <!-- GALERIE PHOTOS EVENTPICS -->
+  <!-- GALERIE PHOTOS PAR BOUTON DORÉ -->
   <section class="gallery">
     <div class="wrap">
-      <div class="gallery-head">
+      <div class="cta-box">
         <div class="cta-eyebrow">Album Partagé</div>
         <h2>Vos photos & souvenirs</h2>
-        <a href="https://event.pics/w/CriGjaEfcGq9" target="_blank" class="admin-link">⚙️ Zone d'administration (Organisateur)</a>
-      </div>
-      
-      <div class="gallery-box">
-        <iframe class="album-frame" src="https://event.pics/w/CriGjaEfcGq9" allow="camera"></iframe>
+        <p>Cliquez sur le bouton ci-dessous pour ajouter vos photos de la soirée et consulter l'album complet !</p>
+        <a href="https://event.pics/w/CriGjaEfcGq9" target="_blank" class="photo-btn">📷 Déposer / Voir les photos</a>
       </div>
     </div>
   </section>
@@ -132,9 +125,9 @@
   <!-- CONFIRMATION DE PRESENCE (RSVP) -->
   <section class="rsvp">
     <div class="wrap">
-      <div class="gallery-head">
+      <div style="text-align:center; margin-bottom:30px;">
         <div class="cta-eyebrow">Confirmation</div>
-        <h2>Serez-vous présent ?</h2>
+        <h2 style="font-size:clamp(30px,5.5vw,46px); margin:0;">Serez-vous présent ?</h2>
       </div>
       
       <div class="form-box">
