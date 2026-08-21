@@ -1,64 +1,235 @@
-<!doctype html><html lang="fr"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Les 40 Ans d'Aline</title><meta name="description" content="Célébrons ensemble les 40 ans d'Aline — partagez vos souvenirs et confirmez votre présence." />
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>  :root{    --bg:#0d1117;    --bg-alt:#12181f;    --gold:#f1c40f;    --gold-soft:#c9a227;    --ivory:#eae6da;    --muted:#8a93a1;    --line:rgba(241,196,15,0.18);  }
-  *{box-sizing:border-box;}  html{scroll-behavior:smooth;}
-  body{    margin:0;    background:      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(241,196,15,0.09), transparent 60%),      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(241,196,15,0.06), transparent 55%),      var(--bg);    color:var(--ivory);    font-family:'Jost', sans-serif;    font-weight:300;    -webkit-font-smoothing:antialiased;    overflow-x:hidden;  }
-  h1,h2,.display{    font-family:'Cormorant Garamond', serif;    font-weight:600;    letter-spacing:0.01em;  }
-  a{color:inherit;}
-  .grain{    position:fixed; inset:0; pointer-events:none; z-index:50;    opacity:0.035; mix-blend-mode:overlay;    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");  }
-  #lock{    position:fixed; inset:0; z-index:100;    display:flex; align-items:center; justify-content:center;    background:var(--bg);    padding:24px;  }  #lock::before{    content:"";    position:absolute; inset:0;    background:      radial-gradient(circle at 50% 30%, rgba(241,196,15,0.10), transparent 55%);    pointer-events:none;  }  .lock-card{    position:relative;    width:100%; max-width:380px;    text-align:center;    padding:48px 32px 40px;    border:1px solid var(--line);    background:linear-gradient(180deg, rgba(241,196,15,0.04), transparent 40%), var(--bg-alt);  }  .lock-card::before,.lock-card::after{    content:"";    position:absolute; width:22px; height:22px;    border:1px solid var(--gold-soft);  }  .lock-card::before{ top:-1px; left:-1px; border-right:none; border-bottom:none; }  .lock-card::after{ bottom:-1px; right:-1px; border-left:none; border-top:none; }
-  .lock-mono{    font-family:'Jost', sans-serif;    font-size:11px;    letter-spacing:0.35em;    text-transform:uppercase;    color:var(--gold);    margin-bottom:18px;  }  .lock-title{    font-size:clamp(28px,7vw,34px);    margin:0 0 10px;    color:var(--ivory);  }  .lock-sub{    font-size:14px;    color:var(--muted);    line-height:1.6;    margin:0 0 30px;  }  #lock-form{ display:flex; flex-direction:column; gap:14px; }  #lock-input{    width:100%;    background:transparent;    border:none;    border-bottom:1px solid var(--line);    color:var(--ivory);    font-family:'Jost', sans-serif;    font-size:16px;    letter-spacing:0.08em;    text-align:center;    padding:12px 4px;    outline:none;    transition:border-color 0.3s ease;  }  #lock-input:focus{ border-color:var(--gold); }  #lock-input::placeholder{ color:var(--muted); letter-spacing:0.08em; }
-  .lock-btn{    margin-top:8px;    background:var(--gold);    color:#1a1406;    border:none;    padding:14px 20px;    font-family:'Jost', sans-serif;    font-size:12px;    font-weight:600;    letter-spacing:0.22em;    text-transform:uppercase;    cursor:pointer;    transition:transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;  }  .lock-btn:hover{ box-shadow:0 8px 24px rgba(241,196,15,0.25); transform:translateY(-2px); }  .lock-btn:active{ transform:translateY(0); }  .lock-error{    color:#e07a5f;    font-size:12.5px;    letter-spacing:0.03em;    height:16px;    margin-top:14px;    opacity:0;    transition:opacity 0.2s ease;  }  .lock-error.show{ opacity:1; }  .shake{ animation:shake 0.45s ease; }  @keyframes shake{    10%,90%{ transform:translateX(-1px); }    20%,80%{ transform:translateX(2px); }    30%,50%,70%{ transform:translateX(-5px); }    40%,60%{ transform:translateX(5px); }  }
-  #site{ display:none; }  #site.visible{ display:block; animation:fadeIn 0.8s ease both; }  @keyframes fadeIn{ from{ opacity:0; } to{ opacity:1; } }
-  .wrap{    max-width:1040px;    margin:0 auto;    padding:0 24px;  }
-  header.hero{    position:relative;    min-height:85vh;    display:flex;    flex-direction:column;    align-items:center;    justify-content:center;    text-align:center;    padding:80px 24px 60px;    overflow:hidden;  }  .hero-orbit{    position:absolute;    top:50%; left:50%;    width:min(720px,140vw); height:min(720px,140vw);    transform:translate(-50%,-50%);    border:1px solid var(--line);    border-radius:50%;    pointer-events:none;  }  .hero-orbit.small{    width:min(480px,100vw); height:min(480px,100vw);    animation:spin 60s linear infinite;  }  .hero-orbit.large{ animation:spin 90s linear infinite reverse; }  @keyframes spin{ to{ transform:translate(-50%,-50%) rotate(360deg); } }
-  .kicker{    position:relative;    font-size:12px;    letter-spacing:0.4em;    text-transform:uppercase;    color:var(--gold);    margin-bottom:26px;    opacity:0;    animation:rise 0.9s ease 0.1s forwards;  }  .hero h1{    position:relative;    font-size:clamp(42px, 10vw, 96px);    line-height:0.98;    margin:0;    color:var(--ivory);    opacity:0;    animation:rise 1s ease 0.25s forwards;  }  .hero h1 em{    font-style:italic;    color:var(--gold);    display:block;    font-size:clamp(60px, 18vw, 170px);    line-height:0.85;    margin:6px 0;  }  .hero-sub{    position:relative;    max-width:520px;    margin:30px auto 0;    font-size:16.5px;    line-height:1.75;    color:var(--muted);    opacity:0;    animation:rise 1s ease 0.45s forwards;  }  .hero-sub strong{ color:var(--ivory); font-weight:500; }
-  @keyframes rise{    from{ opacity:0; transform:translateY(18px); }    to{ opacity:1; transform:translateY(0); }  }
-  .hero-date{    position:relative;    margin-top:34px;    display:inline-flex;    gap:10px;    align-items:center;    font-size:12px;    letter-spacing:0.25em;    text-transform:uppercase;    color:var(--gold-soft);    opacity:0;    animation:rise 1s ease 0.6s forwards;  }  .hero-date span.dot{ width:4px; height:4px; background:var(--gold); border-radius:50%; display:inline-block; }
-  /* Formulaires Styling */  .form-box{    max-width:550px;    margin:0 auto;    padding:30px;    background:var(--bg-alt);    border:1px solid var(--line);    text-align:left;  }  .form-group{    margin-bottom:20px;  }  .form-group label{    display:block;    font-size:13px;    letter-spacing:0.1em;    text-transform:uppercase;    color:var(--gold);    margin-bottom:8px;  }  .form-group input[type="text"],  .form-group textarea,  .form-group select{    width:100%;    background:rgba(13,17,23,0.6);    border:1px solid var(--line);    color:var(--ivory);    padding:12px;    font-family:'Jost', sans-serif;    font-size:15px;    outline:none;  }  .form-group input[type="text"]:focus,  .form-group textarea:focus,  .form-group select:focus{    border-color:var(--gold);  }  .form-group input[type="file"]{    color:var(--muted);    font-size:14px;  }
-  section.cta{    padding:80px 24px;    border-top:1px solid var(--line);    border-bottom:1px solid var(--line);    background:linear-gradient(180deg, transparent, rgba(241,196,15,0.035), transparent);  }  .cta-eyebrow{    font-size:12px; letter-spacing:0.35em; text-transform:uppercase;    color:var(--muted); margin-bottom:18px; text-align:center;  }  .cta h2{    font-size:clamp(30px,5.5vw,46px);    margin:0 0 18px;    color:var(--ivory);    text-align:center;  }  .cta p.sub{    max-width:460px; margin:0 auto 30px;    color:var(--muted); font-size:15.5px; line-height:1.75; text-align:center;  }
-  .photo-btn{    width:100%;    display:inline-flex;    align-items:center;    justify-content:center;    gap:14px;    padding:18px 30px;    background:var(--gold);    color:#1a1406;    border:none;    font-family:'Jost', sans-serif;    font-size:14px;    font-weight:600;    letter-spacing:0.14em;    text-transform:uppercase;    cursor:pointer;    transition:transform 0.35s ease, box-shadow 0.35s ease;  }  .photo-btn:hover{ box-shadow:0 12px 30px rgba(241,196,15,0.28); transform:translateY(-2px); }
-  /* Galerie dynamique */  section.gallery{ padding:80px 24px; }  .gallery-head{ text-align:center; margin-bottom:40px; }  .gallery-head .cta-eyebrow{ margin-bottom:16px; }  .gallery-head h2{ font-size:clamp(30px,5.5vw,46px); margin:0; }
-  .grid{    display:grid;    grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));    gap:20px;  }  .card-dynamic{    border:1px solid var(--line);    background:var(--bg-alt);    overflow:hidden;  }  .card-dynamic img{    width:100%;    height:260px;    object-fit:cover;    display:block;  }  .card-dynamic .card-info{    padding:18px;  }  .card-dynamic .author{    font-size:12px;    color:var(--gold);    letter-spacing:0.1em;    text-transform:uppercase;    margin-bottom:6px;    display:block;  }  .card-dynamic .msg{    font-family:'Cormorant Garamond', serif;    font-size:18px;    color:var(--ivory);    margin:0;  }  .empty-gallery-msg{    text-align:center;    color:var(--muted);    font-style:italic;    grid-column:1 / -1;    padding:40px 0;  }
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Les 40 Ans d'Aline</title>
+  <meta name="description" content="Célébrons ensemble les 40 ans d'Aline — partagez vos souvenirs et confirmez votre présence." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root{ --bg:#0d1117; --bg-alt:#12181f; --gold:#f1c40f; --gold-soft:#c9a227; --ivory:#eae6da; --muted:#8a93a1; --line:rgba(241,196,15,0.18); }
+    *{box-sizing:border-box;} html{scroll-behavior:smooth;}
+    body{ margin:0; background: radial-gradient(ellipse 900px 500px at 15% -10%, rgba(241,196,15,0.09), transparent 60%), radial-gradient(ellipse 700px 500px at 100% 10%, rgba(241,196,15,0.06), transparent 55%), var(--bg); color:var(--ivory); font-family:'Jost', sans-serif; font-weight:300; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+    h1,h2,.display{ font-family:'Cormorant Garamond', serif; font-weight:600; letter-spacing:0.01em; }
+    a{color:inherit;}
+    .grain{ position:fixed; inset:0; pointer-events:none; z-index:50; opacity:0.035; mix-blend-mode:overlay; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    
+    #lock{ position:fixed; inset:0; z-index:100; display:flex; align-items:center; justify-content:center; background:var(--bg); padding:24px; }
+    #lock::before{ content:""; position:absolute; inset:0; background: radial-gradient(circle at 50% 30%, rgba(241,196,15,0.10), transparent 55%); pointer-events:none; }
+    .lock-card{ position:relative; width:100%; max-width:380px; text-align:center; padding:48px 32px 40px; border:1px solid var(--line); background:linear-gradient(180deg, rgba(241,196,15,0.04), transparent 40%), var(--bg-alt); }
+    .lock-card::before,.lock-card::after{ content:""; position:absolute; width:22px; height:22px; border:1px solid var(--gold-soft); }
+    .lock-card::before{ top:-1px; left:-1px; border-right:none; border-bottom:none; }
+    .lock-card::after{ bottom:-1px; right:-1px; border-left:none; border-top:none; }
+    .lock-mono{ font-family:'Jost', sans-serif; font-size:11px; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); margin-bottom:18px; }
+    .lock-title{ font-size:clamp(28px,7vw,34px); margin:0 0 10px; color:var(--ivory); }
+    .lock-sub{ font-size:14px; color:var(--muted); line-height:1.6; margin:0 0 30px; }
+    #lock-form{ display:flex; flex-direction:column; gap:14px; }
+    #lock-input{ width:100%; background:transparent; border:none; border-bottom:1px solid var(--line); color:var(--ivory); font-family:'Jost', sans-serif; font-size:16px; letter-spacing:0.08em; text-align:center; padding:12px 4px; outline:none; transition:border-color 0.3s ease; }
+    #lock-input:focus{ border-color:var(--gold); }
+    #lock-input::placeholder{ color:var(--muted); letter-spacing:0.08em; }
+    .lock-btn{ margin-top:8px; background:var(--gold); color:#1a1406; border:none; padding:14px 20px; font-family:'Jost', sans-serif; font-size:12px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; cursor:pointer; transition:transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease; }
+    .lock-btn:hover{ box-shadow:0 8px 24px rgba(241,196,15,0.25); transform:translateY(-2px); }
+    .lock-btn:active{ transform:translateY(0); }
+    .lock-error{ color:#e07a5f; font-size:12.5px; letter-spacing:0.03em; height:16px; margin-top:14px; opacity:0; transition:opacity 0.2s ease; }
+    .lock-error.show{ opacity:1; }
+    .shake{ animation:shake 0.45s ease; }
+    @keyframes shake{ 10%,90%{ transform:translateX(-1px); } 20%,80%{ transform:translateX(2px); } 30%,50%,70%{ transform:translateX(-5px); } 40%,60%{ transform:translateX(5px); } }
+    
+    #site{ display:none; }
+    #site.visible{ display:block; animation:fadeIn 0.8s ease both; }
+    @keyframes fadeIn{ from{ opacity:0; } to{ opacity:1; } }
+    .wrap{ max-width:1040px; margin:0 auto; padding:0 24px; }
+    
+    header.hero{ position:relative; min-height:75vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:80px 24px 40px; overflow:hidden; }
+    .hero-orbit{ position:absolute; top:50%; left:50%; width:min(720px,140vw); height:min(720px,140vw); transform:translate(-50%,-50%); border:1px solid var(--line); border-radius:50%; pointer-events:none; }
+    .hero-orbit.small{ width:min(480px,100vw); height:min(480px,100vw); animation:spin 60s linear infinite; }
+    .hero-orbit.large{ animation:spin 90s linear infinite reverse; }
+    @keyframes spin{ to{ transform:translate(-50%,-50%) rotate(360deg); } }
+    .kicker{ position:relative; font-size:12px; letter-spacing:0.4em; text-transform:uppercase; color:var(--gold); margin-bottom:26px; opacity:0; animation:rise 0.9s ease 0.1s forwards; }
+    .hero h1{ position:relative; font-size:clamp(42px, 10vw, 96px); line-height:0.98; margin:0; color:var(--ivory); opacity:0; animation:rise 1s ease 0.25s forwards; }
+    .hero h1 em{ font-style:italic; color:var(--gold); display:block; font-size:clamp(60px, 18vw, 170px); line-height:0.85; margin:6px 0; }
+    .hero-sub{ position:relative; max-width:520px; margin:30px auto 0; font-size:16.5px; line-height:1.75; color:var(--muted); opacity:0; animation:rise 1s ease 0.45s forwards; }
+    @keyframes rise{ from{ opacity:0; transform:translateY(18px); } to{ opacity:1; transform:translateY(0); } }
+    .hero-date{ position:relative; margin-top:34px; display:inline-flex; gap:10px; align-items:center; font-size:12px; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold-soft); opacity:0; animation:rise 1s ease 0.6s forwards; }
+    .hero-date span.dot{ width:4px; height:4px; background:var(--gold); border-radius:50%; display:inline-block; }
+    
+    .form-box{ max-width:550px; margin:0 auto; padding:30px; background:var(--bg-alt); border:1px solid var(--line); text-align:left; }
+    .form-group{ margin-bottom:20px; }
+    .form-group label{ display:block; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+    .form-group input[type="text"], .form-group textarea, .form-group select{ width:100%; background:rgba(13,17,23,0.6); border:1px solid var(--line); color:var(--ivory); padding:12px; font-family:'Jost', sans-serif; font-size:15px; outline:none; }
+    .form-group input[type="text"]:focus, .form-group textarea:focus, .form-group select:focus{ border-color:var(--gold); }
+    
+    .cta-eyebrow{ font-size:12px; letter-spacing:0.35em; text-transform:uppercase; color:var(--muted); margin-bottom:18px; text-align:center; }
+    .photo-btn{ width:100%; display:inline-flex; align-items:center; justify-content:center; gap:14px; padding:18px 30px; background:var(--gold); color:#1a1406; border:none; font-family:'Jost', sans-serif; font-size:14px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; cursor:pointer; transition:transform 0.35s ease, box-shadow 0.35s ease; }
+    .photo-btn:hover{ box-shadow:0 12px 30px rgba(241,196,15,0.28); transform:translateY(-2px); }
+    
+    /* Intégration Kululu */
+    section.gallery{ padding:60px 24px 80px; }
+    .gallery-container{ border:1px solid var(--line); background:var(--bg-alt); padding:8px; border-radius:4px; box-shadow:0 10px 30px rgba(0,0,0,0.5); }
+    iframe.album-frame{ width:100%; height:750px; border:none; background:transparent; }
 
-  /* Section RSVP */  section.rsvp{    padding:80px 24px;    border-top:1px solid var(--line);  }  .guest-list{    margin-top:30px;    border-top:1px solid var(--line);    padding-top:20px;  }  .guest-item{    display:flex;    justify-content:space-between;    padding:10px 0;    border-bottom:1px solid rgba(241,196,15,0.08);    font-size:14px;  }  .guest-status{    color:var(--gold);    font-weight:500;  }
+    /* Section RSVP & Admin */
+    section.rsvp{ padding:80px 24px; border-top:1px solid var(--line); }
+    .guest-list{ margin-top:30px; border-top:1px solid var(--line); padding-top:20px; }
+    .guest-item{ display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid rgba(241,196,15,0.08); font-size:14px; }
+    .guest-status{ color:var(--gold); font-weight:500; }
+    .delete-btn{ display:none; background:#e07a5f; color:#fff; border:none; padding:4px 8px; font-size:10px; text-transform:uppercase; cursor:pointer; margin-left:10px; font-family:'Jost', sans-serif; }
+    body.is-admin .delete-btn{ display:inline-block; }
+    .admin-badge{ display:none; background:var(--gold); color:#1a1406; padding:4px 10px; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; font-weight:600; position:fixed; bottom:15px; right:15px; z-index:99; }
+    body.is-admin .admin-badge{ display:block; }
 
-  footer{    padding:60px 24px 50px;    text-align:center;    border-top:1px solid var(--line);  }  footer .mono{ font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:var(--muted); }  footer .heart{ color:var(--gold); margin:0 6px; }</style></head><body>
+    footer{ padding:60px 24px 50px; text-align:center; border-top:1px solid var(--line); }
+    footer .mono{ font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:var(--muted); }
+    footer .heart{ color:var(--gold); margin:0 6px; }
+  </style>
+</head>
+<body>
 <div class="grain"></div>
+<div class="admin-badge">Mode Admin Actif</div>
 
 <!-- LOCK SCREEN -->
-<div id="lock">  <div class="lock-card">    <div class="lock-mono">Invitation privée</div>    <h1 class="lock-title">Accès réservé</h1>    <p class="lock-sub">Entrez le mot de passe de votre invitation pour accéder à l'événement.</p>    <form id="lock-form" autocomplete="off">      <input type="password" id="lock-input" placeholder="Mot de passe" aria-label="Mot de passe" />      <button type="submit" class="lock-btn">Entrer</button>      <div class="lock-error" id="lock-error">Mot de passe incorrect, réessayez.</div>    </form>  </div></div>
+<div id="lock">
+  <div class="lock-card">
+    <div class="lock-mono">Invitation privée</div>
+    <h1 class="lock-title">Accès réservé</h1>
+    <p class="lock-sub">Entrez le mot de passe pour accéder à l'événement.</p>
+    <form id="lock-form" autocomplete="off">
+      <input type="password" id="lock-input" placeholder="Mot de passe" aria-label="Mot de passe" />
+      <button type="submit" class="lock-btn">Entrer</button>
+      <div class="lock-error" id="lock-error">Mot de passe incorrect, réessayez.</div>
+    </form>
+  </div>
+</div>
 
 <!-- SITE CONTENT -->
 <div id="site">
-  <header class="hero">    <div class="hero-orbit small"></div>    <div class="hero-orbit large"></div>    <div class="kicker">Vous êtes cordialement invité·e</div>    <h1>Les<em>40 Ans</em>d'Aline</h1>    <p class="hero-sub">Partagez vos photos, laissez un message et confirmez votre présence pour célébrer ce moment ensemble.</p>    <div class="hero-date"><span class="dot"></span>Une soirée inoubliable<span class="dot"></span></div>  </header>
+  <header class="hero">
+    <div class="hero-orbit small"></div>
+    <div class="hero-orbit large"></div>
+    <div class="kicker">Vous êtes cordialement invité·e</div>
+    <h1>Les<em>40 Ans</em>d'Aline</h1>
+    <p class="hero-sub">Partagez vos photos, laissez un message et confirmez votre présence pour célébrer ce moment ensemble.</p>
+    <div class="hero-date"><span class="dot"></span>Une soirée inoubliable<span class="dot"></span></div>
+  </header>
 
-  <!-- DEPOSE DE PHOTOS -->
-  <section class="cta">    <div class="wrap">      <div class="cta-eyebrow">Souvenirs</div>      <h2>Ajouter une photo</h2>      <p class="sub">Choisissez une photo dans votre téléphone (Android ou iPhone) et ajoutez un petit mot.</p>      
-      <div class="form-box">        <form id="photo-form">          <div class="form-group">            <label for="photo-file">Sélectionner une photo</label>            <input type="file" id="photo-file" accept="image/*" required />          </div>          <div class="form-group">            <label for="photo-author">Votre prénom</label>            <input type="text" id="photo-author" placeholder="Ex: Marie & Thomas" required />          </div>          <div class="form-group">            <label for="photo-msg">Un petit mot ou souvenir</label>            <textarea id="photo-msg" rows="3" placeholder="Écrivez un message ici..."></textarea>          </div>          <button type="submit" class="photo-btn">Publier la photo</button>        </form>      </div>    </div>  </section>
+  <!-- GALERIE PHOTOS KULULU EN DIRECT -->
+  <section class="gallery">
+    <div class="wrap">
+      <div class="cta-eyebrow">Album Partagé</div>
+      <h2 style="text-align:center; font-size:clamp(30px,5.5vw,46px); margin:0 0 30px;">Vos photos & souvenirs en direct</h2>
+      
+      <div class="gallery-container">
+        <iframe class="album-frame" src="https://app.kululu.com/vk1n37" allow="camera"></iframe>
+      </div>
+    </div>
+  </section>
 
-  <!-- GALERIE PHOTOS -->
-  <section class="gallery">    <div class="wrap">      <div class="gallery-head">        <div class="cta-eyebrow">Album Partagé</div>        <h2>Vos photos & mots doux</h2>      </div>      <div class="grid" id="gallery-grid">        <div class="empty-gallery-msg" id="empty-msg">Aucune photo pour l'instant. Soyez le premier à en ajouter une !</div>      </div>    </div>  </section>
+  <!-- CONFIRMATION DE PRESENCE (RSVP) -->
+  <section class="rsvp">
+    <div class="wrap">
+      <div class="cta-eyebrow">Confirmation</div>
+      <h2 style="text-align:center; font-size:clamp(30px,5.5vw,46px); margin:0 0 30px;">Serez-vous présent ?</h2>
+      
+      <div class="form-box">
+        <form id="rsvp-form">
+          <div class="form-group">
+            <label for="rsvp-name">Votre nom / prénom</label>
+            <input type="text" id="rsvp-name" placeholder="Ex: Lucas" required />
+          </div>
+          <div class="form-group">
+            <label for="rsvp-status">Votre réponse</label>
+            <select id="rsvp-status">
+              <option value="Sera présent(e)">Oui, je viens avec plaisir ! 🎉</option>
+              <option value="Ne pourra pas venir">Malheureusement, je ne pourrai pas venir 😢</option>
+            </select>
+          </div>
+          <button type="submit" class="photo-btn">Valider ma réponse</button>
+        </form>
 
-  <!-- CONFIRMATION DE PRESENCE (RSVP avec Formspree) -->
-  <section class="rsvp">    <div class="wrap">      <div class="cta-eyebrow">Confirmation</div>      <h2>Serez-vous présent ?</h2>      
-      <div class="form-box">        <form id="rsvp-form" action="https://formspree.io/f/xeajnvab" method="POST">          <div class="form-group">            <label for="rsvp-name">Votre nom / prénom</label>            <input type="text" id="rsvp-name" name="nom" placeholder="Ex: Lucas" required />          </div>          <div class="form-group">            <label for="rsvp-status">Votre réponse</label>            <select id="rsvp-status" name="reponse">              <option value="Sera présent(e)">Oui, je viens avec plaisir ! 🎉</option>              <option value="Ne pourra pas venir">Malheureusement, je ne pourrai pas venir 😢</option>            </select>          </div>          <button type="submit" class="photo-btn">Valider ma réponse</button>        </form>
-      </div>    </div>  </section>
+        <div class="guest-list" id="guest-list" style="display:none;">
+          <div class="cta-eyebrow" style="text-align:left; margin-top:20px;">Réponses reçues :</div>
+          <div id="guest-items"></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script>(function(){  var PASSWORD = "Tata40";  var params = new URLSearchParams(window.location.search);  var lock = document.getElementById('lock');  var site = document.getElementById('site');
+  <footer>
+    <div class="mono">Fait avec<span class="heart">✦</span>pour les 40 ans d'Aline</div>
+  </footer>
+</div>
 
-  function unlock(persist){    lock.style.display = 'none';    site.classList.add('visible');    if(persist){      try{ sessionStorage.setItem('tata40_unlocked', '1'); }catch(e){}    }  }
+<script>
+(function(){
+  var PASS_GUEST = "Tata40";
+  var PASS_ADMIN = "Nykico=3";
+  
+  var params = new URLSearchParams(window.location.search);
+  var lock = document.getElementById('lock');
+  var site = document.getElementById('site');
 
-  var urlPass = params.get('pass');  var alreadyUnlocked = false;  try{ alreadyUnlocked = sessionStorage.getItem('tata40_unlocked') === '1'; }catch(e){}
+  function unlock(role){
+    lock.style.display = 'none';
+    site.classList.add('visible');
+    if(role === 'admin') {
+      document.body.classList.add('is-admin');
+    }
+    try{ sessionStorage.setItem('tata40_role', role); }catch(e){}
+  }
 
-  if(urlPass === PASSWORD || alreadyUnlocked){    unlock(true);  } else {    var form = document.getElementById('lock-form');    var input = document.getElementById('lock-input');    var error = document.getElementById('lock-error');    var card = document.querySelector('.lock-card');
+  var savedRole = null;
+  try{ savedRole = sessionStorage.getItem('tata40_role'); }catch(e){}
+  var urlPass = params.get('pass');
 
-    form.addEventListener('submit', function(e){      e.preventDefault();      if(input.value === PASSWORD){        unlock(true);      } else {        error.classList.add('show');        card.classList.remove('shake');        void card.offsetWidth;        card.classList.add('shake');        input.value = '';        input.focus();      }    });  }
+  if(urlPass === PASS_ADMIN || savedRole === 'admin'){
+    unlock('admin');
+  } else if(urlPass === PASS_GUEST || savedRole === 'guest'){
+    unlock('guest');
+  } else {
+    var form = document.getElementById('lock-form');
+    var input = document.getElementById('lock-input');
+    var error = document.getElementById('lock-error');
+    var card = document.querySelector('.lock-card');
 
-  // GESTION DU DEPOT DE PHOTO  var photoForm = document.getElementById('photo-form');  var galleryGrid = document.getElementById('gallery-grid');  var emptyMsg = document.getElementById('empty-msg');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var val = input.value;
+      if(val === PASS_ADMIN){
+        unlock('admin');
+      } else if(val === PASS_GUEST){
+        unlock('guest');
+      } else {
+        error.classList.add('show');
+        card.classList.remove('shake');
+        void card.offsetWidth;
+        card.classList.add('shake');
+        input.value = '';
+        input.focus();
+      }
+    });
+  }
 
-  photoForm.addEventListener('submit', function(e){    e.preventDefault();    var fileInput = document.getElementById('photo-file');    var authorInput = document.getElementById('photo-author').value;    var msgInput = document.getElementById('photo-msg').value;
+  // GESTION DU RSVP
+  var rsvpForm = document.getElementById('rsvp-form');
+  var guestList = document.getElementById('guest-list');
+  var guestItems = document.getElementById('guest-items');
 
-    if (fileInput.files && fileInput.files[0]) {      var reader = new FileReader();      reader.onload = function(e) {        if (emptyMsg) { emptyMsg.style.display = 'none'; }        var card = document.createElement('div');        card.className = 'card-dynamic';        card.innerHTML = '<img src="' + e.target.result + '" alt="Photo"><div class="card-info"><span class="author">' + authorInput + '</span><p class="msg">' + (msgInput || 'A déposé une photo') + '</p></div>';        galleryGrid.prepend(card);        photoForm.reset();      };      reader.readAsDataURL(fileInput.files[0]);    }  });
-})();</script>
-</body></html>
+  rsvpForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('rsvp-name').value;
+    var status = document.getElementById('rsvp-status').value;
+
+    guestList.style.display = 'block';
+    var item = document.createElement('div');
+    item.className = 'guest-item';
+    item.innerHTML = '<div><span>' + name + '</span> — <span class="guest-status">' + status + '</span></div><button class="delete-btn" onclick="this.parentElement.remove()">Supprimer</button>';
+    guestItems.prepend(item);
+    rsvpForm.reset();
+  });
+})();
+</script>
+</body>
+</html>
