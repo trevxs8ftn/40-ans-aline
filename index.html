@@ -45,9 +45,6 @@
       <div class="form-box">        <form id="rsvp-form" action="https://formspree.io/f/xeajnvab" method="POST">          <div class="form-group">            <label for="rsvp-name">Votre nom / prénom</label>            <input type="text" id="rsvp-name" name="nom" placeholder="Ex: Lucas" required />          </div>          <div class="form-group">            <label for="rsvp-status">Votre réponse</label>            <select id="rsvp-status" name="reponse">              <option value="Sera présent(e)">Oui, je viens avec plaisir ! 🎉</option>              <option value="Ne pourra pas venir">Malheureusement, je ne pourrai pas venir 😢</option>            </select>          </div>          <button type="submit" class="photo-btn">Valider ma réponse</button>        </form>
       </div>    </div>  </section>
 
-  <footer>    <div class="mono">Fait avec<span class="heart">✦</span>pour les 40 ans d'Aline</div>  </footer>
-</div>
-
 <script>(function(){  var PASSWORD = "Tata40";  var params = new URLSearchParams(window.location.search);  var lock = document.getElementById('lock');  var site = document.getElementById('site');
 
   function unlock(persist){    lock.style.display = 'none';    site.classList.add('visible');    if(persist){      try{ sessionStorage.setItem('tata40_unlocked', '1'); }catch(e){}    }  }
